@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIoT Guide - ESP32 + DHT22 Wokwi Simulation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <!-- Prism.js theme for code highlighting (optional) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css"
+  />
+
+  <!-- Your custom CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+        <span class="logo-badge">🐝BioT</span>
+      </a>
+      <button
+        class="navbar-toggler text-white"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="border-color: #fec53c;"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../white-papers.html">White Papers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="guides.html">Guides & Tutorials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Overview Section -->
+  <header class="py-5 text-white" style="background-color: var(--bs-primary);">
+    <div class="container">
+      <h1 class="display-4 fw-bold">
+        Simulating ESP32 + DHT22 with Wokwi
+      </h1>
+      <p class="lead mt-3">
+        A cross-platform guide for makers: run a virtual ESP32 + DHT22 sensor in your browser—no hardware required!
+      </p>
+      <!-- Optional PDF link if you have a PDF version -->
+      <!--
+      <a
+        href="../assets/pdfs/esp32-dht22-wokwi.pdf"
+        class="btn btn-outline-light mt-3"
+        target="_blank"
+      >
+        Download PDF
+      </a>
+      -->
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="my-5">
+    <div class="container">
+      <!-- Introduction -->
+      <section class="mb-5">
+        <h2 class="text-navy">Introduction</h2>
+        <p>
+          Welcome, digital tinkerers, IoT enthusiasts, and curious minds! 
+          In this guide, we'll explore how to simulate an <strong>ESP32 microcontroller</strong> 
+          connected to a <strong>DHT22 temperature &amp; humidity sensor</strong> 
+          using the magic of 
+          <a href="https://wokwi.com/" target="_blank">Wokwi</a>.
+        </p>
+        <p>
+          Why simulate? Simple:
+        </p>
+        <ul>
+          <li>No physical hardware needed</li>
+          <li>Fast and safe testing</li>
+          <li>Prototype from anywhere</li>
+        </ul>
+        <p>
+          Whether you're a <em>student</em>, <em>hobbyist</em>, 
+          or <em>professional prototyper</em>, let's dive into your first 
+          simulated DHT22 experiment—complete with randomized data. 
+          Buckle up! 🚀
+        </p>
+      </section>
+
+      <!-- Prerequisites -->
+      <section class="mb-5">
+        <h2 class="text-navy">Prerequisites</h2>
+        <p>
+          You only need a browser to run Wokwi simulations. 
+          If you plan to extend your project later with local or cloud logging, 
+          you might need developer tools (we’ll cover that in future guides).
+        </p>
+      </section>
+
+      <!-- Step-by-step Implementation with Accordion -->
+      <section class="mb-5">
+        <h2 class="text-navy">Step-by-Step: Simulate ESP32 + DHT22</h2>
+        <div class="accordion" id="wokwiAccordion">
+
+          <!-- Step 1: Fork Template -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Step 1: Fork the Template
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#wokwiAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Go to the 
+                  <a href="https://wokwi.com/projects/new/esp32-dht22" target="_blank">
+                  ESP32 + DHT22 Template</a>
+                  on Wokwi and click <strong>“Fork”</strong> to create your own editable version.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Understand the Circuit -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                Step 2: Understand the Circuit
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#wokwiAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  The ESP32 is wired to a DHT22 sensor as follows:
+                </p>
+                <ul>
+                  <li>Data Pin: <code>GPIO 15</code></li>
+                  <li>VCC: 3.3V</li>
+                  <li>GND: Ground</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Simulate Sensor Data -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                Step 3: Simulate Sensor Data
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingThree"
+              data-bs-parent="#wokwiAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Wokwi lets you fake sensor data! Click the DHT22, then in the UI:
+                </p>
+                <pre><code class="language-json">
+"humidity": "random(40, 80)",
+"temperature": "random(20, 35)"
+                </code></pre>
+                <p>
+                  Now your sensor returns a new random value each time it's read.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Edit the Code -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                Step 4: Edit the Code
+              </button>
+            </h2>
+            <div
+              id="collapseFour"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingFour"
+              data-bs-parent="#wokwiAccordion"
+            >
+              <div class="accordion-body">
+                <p>Use this Arduino sketch in your <code>sketch.ino</code>:</p>
+                <pre><code class="language-cpp">
+#include "DHT.h"
+#define DHTPIN 15
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  Serial.begin(115200);
+  dht.begin();
+}
+
+void loop() {
+  float temp = dht.readTemperature();
+  float hum = dht.readHumidity();
+  
+  Serial.print("Temperature: ");
+  Serial.print(temp);
+  Serial.print(" °C\tHumidity: ");
+  Serial.print(hum);
+  Serial.println(" %");
+
+  delay(2000);
+}
+                </code></pre>
+                <p>
+                  Then click “<strong>Start Simulation</strong>” to see the readings flow.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Data Viewing -->
+      <section class="mb-5">
+        <h2 class="text-navy">Data Viewing</h2>
+        <p>
+          The Wokwi <strong>Serial Monitor</strong> emulates how the Arduino IDE 
+          would show your sensor data. Every 2 seconds, you’ll see new temperature 
+          and humidity readings like:
+        </p>
+        <pre><code class="language-bash">
+Temperature: 27.45 °C   Humidity: 65.23 %
+        </code></pre>
+      </section>
+
+      <!-- Wrap-Up -->
+      <section class="mb-5">
+        <h2 class="text-navy">Wrap-Up</h2>
+        <p>
+          Simulating an ESP32 + DHT22 in Wokwi grants you the freedom to:
+        </p>
+        <ul>
+          <li>Prototype without physical hardware</li>
+          <li>Quickly test sensor logic</li>
+          <li>Control your "environment" with random data</li>
+        </ul>
+        <p>
+          Perfect for teaching, debugging, or planning a bigger IoT build. 
+          Next steps might include adding more sensors, storing data locally, 
+          or sending it to a cloud service. 
+        </p>
+        <p><em>Happy simulating!</em></p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-3 text-center text-white" id="siteFooter" style="background-color: #333;">
+    <div class="container">
+      <small>
+        &copy; <span id="year"></span> BioT. All rights reserved.
+      </small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- Prism.js for highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
+
+  <script>
+    // Auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

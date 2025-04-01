@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIoT Guide - Hello MQTT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <!-- Prism.js theme for code highlighting -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css"
+  />
+
+  <!-- Your existing custom CSS for nav, brand colors, etc. -->
+  <!-- e.g., same styles.css used by index.html -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+
+  <!-- (Optional) Light/Dark Mode Toggle JS or CSS
+       If you have a specific script or approach from index.html,
+       add that here as well.
+  -->
+</head>
+<body>
+  <!-- Navbar (copied from index.html, adapt links & brand as needed) -->
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+        <span class="logo-badge">🐝BioT</span>
+      </a>
+      <button
+        class="navbar-toggler text-white"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="border-color: #fec53c;"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../white-papers.html">White Papers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="guides.html">Guides & Tutorials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Overview Section -->
+  <header class="py-5 text-white" style="background-color: var(--bs-primary);">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Hello MQTT – Basic Message Publishing/Subscribing</h1>
+      <p class="lead mt-3">
+        Your first steps into real-time IoT messaging with Python and Mosquitto.
+      </p>
+      <!-- Optional: PDF Download Button -->
+      <a
+        href="../assets/pdfs/hello_mqtt_guide.pdf"
+        class="btn btn-outline-light mt-3"
+        target="_blank"
+      >
+        Download PDF
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="my-5">
+    <div class="container">
+
+      <!-- Introduction / Abstract Section -->
+      <section class="mb-5">
+        <h2 class="text-navy">Abstract</h2>
+        <p>
+          Ever wanted your devices to talk to each other like old friends?
+          This guide introduces you to the basics of MQTT messaging using
+          the Mosquitto broker and Python's Paho MQTT library. Whether
+          you're on Windows, Linux, or macOS, this is your beginner-friendly
+          path to understanding how devices communicate in the Internet of Things.
+        </p>
+      </section>
+
+      <!-- Example Collapsible Section using Bootstrap Accordion -->
+      <section class="mb-5">
+        <h2 class="text-navy">Guide Contents</h2>
+        <div class="accordion" id="mqttGuideAccordion">
+
+          <!-- Tools & Setup -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                🧰 Tools & Setup
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#mqttGuideAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  <strong>Software Requirements:</strong><br/>
+                  Python 3, Paho-MQTT library, and Mosquitto broker.<br/>
+                  This section describes what each tool does and how to install them.
+                </p>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Component</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Python 3</td>
+                      <td>Programming language for our scripts</td>
+                    </tr>
+                    <tr>
+                      <td>Paho-MQTT</td>
+                      <td>Python library to connect to MQTT brokers</td>
+                    </tr>
+                    <tr>
+                      <td>Mosquitto</td>
+                      <td>Lightweight MQTT broker (local testing)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                🔧 Installation – All Platforms
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#mqttGuideAccordion"
+            >
+              <div class="accordion-body">
+                <p class="fw-bold">🐧 Linux (Ubuntu/Debian):</p>
+                <pre><code class="language-bash">
+          sudo apt update
+          sudo apt install mosquitto mosquitto-clients
+          sudo apt install python3 python3-pip
+          pip3 install paho-mqtt==1.6.1
+                </code></pre>
+          
+                <p class="fw-bold">🪟 Windows:</p>
+                <ul>
+                  <li>Download Mosquitto from <a href="https://mosquitto.org/download/" target="_blank">mosquitto.org/download</a></li>
+                  <li>Install with default settings (ensure port <code>1883</code> is allowed in Windows Firewall).</li>
+                  <li>Add <code>mosquitto</code> to your system PATH or run it from the install directory.</li>
+                  <li>Install Python & pip from <a href="https://www.python.org" target="_blank">python.org</a></li>
+                  <li>Install the correct Paho MQTT version:</li>
+                </ul>
+                <pre><code class="language-batch">
+          pip install paho-mqtt==1.6.1
+                </code></pre>
+          
+                <p class="fw-bold">🍎 macOS (with Homebrew):</p>
+                <pre><code class="language-bash">
+          brew install mosquitto
+          brew services start mosquitto
+          pip3 install paho-mqtt==1.6.1
+                </code></pre>
+              </div>
+            </div>
+          </div>
+          
+
+
+          <!-- Step-by-step Implementation -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                🚀 Step-by-Step Implementation
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#mqttGuideAccordion"
+            >
+              <div class="accordion-body">
+                <p class="fw-bold">MQTT Flow Diagram:</p>
+                <pre><code class="language-java">
+Publisher.py  →  MQTT Broker (Mosquitto)  →  Subscriber.py
+                </code></pre>
+
+                <p>
+                  1️⃣ <strong>Start the Mosquitto Broker</strong><br/>
+                  On Linux/macOS:
+                </p>
+                <pre><code class="language-bash">
+mosquitto -v
+                </code></pre>
+
+                <p>
+                  On Windows:
+                </p>
+                <pre><code class="language-bash">
+"C:\Program Files\mosquitto\mosquitto.exe" -v
+                </code></pre>
+
+                <p>
+                  2️⃣ <strong>Create the Publisher Script</strong>
+                </p>
+                <pre><code class="language-python">
+import paho.mqtt.client as mqtt
+import time
+
+broker = "localhost"
+publisher = mqtt.Client("Publisher")
+
+publisher.connect(broker, 1883)
+
+try:
+    while True:
+        publisher.publish("biot/test1", "Hello from BIoT!")
+        print("Message sent.")
+        time.sleep(2)
+except KeyboardInterrupt:
+    print("Stopped by user.")
+finally:
+    publisher.disconnect()
+                </code></pre>
+
+                <p>
+                  3️⃣ <strong>Create the Subscriber Script</strong>
+                </p>
+                <pre><code class="language-python">
+import paho.mqtt.client as mqtt
+
+def on_message(client, userdata, message):
+    print(f"Received: {message.payload.decode()}")
+
+broker = "localhost"
+subscriber = mqtt.Client("Subscriber")
+
+subscriber.connect(broker, 1883)
+subscriber.subscribe("biot/test1")
+
+subscriber.on_message = on_message
+subscriber.loop_forever()
+                </code></pre>
+
+                <p>
+                  4️⃣ <strong>Run & Test</strong><br/>
+                  Terminal 1:
+                </p>
+                <pre><code class="language-bash">
+python subscriber.py
+                </code></pre>
+                <p>Terminal 2:</p>
+                <pre><code class="language-bash">
+python publisher.py
+                </code></pre>
+                <p>Expected:</p>
+                <pre><code class="language-bash">
+Received: Hello from BIoT!
+Received: Hello from BIoT!
+...
+                </code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Troubleshooting & Future Scope -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                🛠️ Troubleshooting & Future Scope
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingThree"
+              data-bs-parent="#mqttGuideAccordion"
+            >
+              <div class="accordion-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>🧩 Issue</th>
+                      <th>🧰 Solution</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>ConnectionRefusedError when running Python script</td>
+                      <td>Make sure the Mosquitto broker is running. Try : <code>mosquitto -v</code> or check the Task Manager (Windows) for mosquitto.exe.</td>
+                    </tr>
+                    <tr>
+                      <td>Port 1883 already in use or Only one usage of each socket address...</td>
+                      <td>Mosquitto is already running. Don't start it again. If needed, restart your machine or stop the existing service.</td>
+                    </tr>
+                    <tr>
+                        <td>Publisher/Subscriber not receiving messages</td>
+                        <td>Ensure both scripts are using the same topic (e.g., biot/test1) and the correct broker address (localhost or IP).</td>
+                      </tr>
+                      <tr>
+                        <td>Python can't find paho.mqtt</td>
+                        <td>Install the correct version: <code>pip install paho-mqtt==1.6.1</code>. Avoid newer versions unless you handle callback_api_version.</td>
+                      </tr>
+                      <tr>
+                        <td>ValueError: Unsupported callback API version</td>
+                        <td>This happens with paho-mqtt >= 2.0. Fix by downgrading to version 1.6.1: <code>pip install paho-mqtt==1.6.1</code></td>
+                      </tr>
+                      <tr>
+                        <td>Mosquitto not starting on Windows</td>
+                        <td>Right-click and run as Administrator. Also, ensure Windows Defender Firewall allows access to port 1883.</td>
+                      </tr>
+                      <tr>
+                        <td>Can't connect using localhost</td>
+                        <td>Try using 127.0.0.1 instead. In some systems, localhost may not resolve properly.</td>
+                      </tr>
+                  </tbody>
+                </table>
+                <p class="fw-bold">Future Scope & Next Steps:</p>
+                <ul>
+                  <li>🔐 Secure MQTT with TLS/SSL</li>
+                  <li>🧑‍💻 Use real IoT devices (ESP32, Raspberry Pi)</li>
+                  <li>📊 Visualize data with Node-RED or web dashboard</li>
+                  <li>🔁 Explore MQTT QoS and retained messages</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> <!-- End Accordion -->
+      </section>
+
+    </div> <!-- /.container -->
+  </main>
+
+  <!-- Footer (same style as index.html) -->
+  <footer class="py-3 text-center text-white" id="siteFooter" style="background-color: #333;">
+    <div class="container">
+      <small>
+        &copy; <span id="year"></span> BioT. All rights reserved.
+      </small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- Prism.js for syntax highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
+
+  <script>
+    // Auto-update year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // (Optional) If you have a light/dark mode toggle script, include it here
+  </script>
+</body>
+</html>

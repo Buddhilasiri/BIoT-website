@@ -1,0 +1,217 @@
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  1. Root Variables: Navy & Gold Brand Palette  */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+:root {
+  /* Navy color as primary brand color */
+  --bs-primary: #1e3a8a; 
+  /* Gold accent color */
+  --gold-accent: #fec53c; 
+  /* Fallback hero color if the image fails to load */
+  --hero-bg: #1e3a8a;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  2. Basic Resets or Global Overrides (Optional) */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* You can include a basic reset or keep it minimal:
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*/
+
+/* ~~~~~~~~~~~~~~~~~~~~~~ */
+/*  3. Navbar & Branding  */
+/* ~~~~~~~~~~~~~~~~~~~~~~ */
+#mainNav {
+  background-color: var(--bs-primary); /* navy background */
+  padding: 1rem 2rem;
+}
+
+/* Make the default navbar toggler icon white/gold-friendly */
+#mainNav .navbar-toggler-icon {
+  filter: invert(100%);
+}
+
+#mainNav .nav-link {
+  color: #fff !important; 
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+  margin-left: 1rem; /* spacing between links */
+}
+
+/* Hover: gold accent and underline */
+#mainNav .nav-link:hover {
+  color: var(--gold-accent) !important; 
+  border-bottom: 2px solid var(--gold-accent);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  4. Hero Section & Background */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#hero {
+  position: relative;
+  min-height: 80vh;
+  background: url("../images/bgI4.webp") center/cover no-repeat;
+  background-color: var(--hero-bg); /* fallback color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden; 
+}
+
+/* Optional dark overlay for text readability */
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 50, 0.3); /* Soft navy overlay */
+  z-index: 0;
+}
+
+/* Container for hero text to appear above overlay */
+#hero .container {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  color: #fff; 
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  5. Animated Scroll-Down Indicator (Optional) */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* 
+   Add this in your HTML: 
+   <a href="#projects" class="scroll-down"></a>
+   and place an arrow icon at "../images/down-arrow.svg" 
+*/
+.scroll-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background: url("../images/svg/down-arrow.svg") no-repeat center;
+  background-size: contain;
+  animation: bounce 1.5s infinite;
+  z-index: 2;
+}
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 10px); }
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  6. Buttons & Interactions */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ */
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  transition: background-color 0.3s ease;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #163466; /* darker navy on hover/focus */
+  border-color: #163466;
+}
+
+.btn-outline-primary {
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  transition: all 0.3s ease;
+}
+.btn-outline-primary:hover {
+  background-color: var(--bs-primary);
+  color: #fff;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  7. Projects Section & Cards */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#projects h2 {
+  color: var(--bs-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Card hover lift effect */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Card titles in navy */
+.card-title {
+  color: var(--bs-primary);
+  font-weight: 600;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~ */
+/*  8. Contact Section     */
+/* ~~~~~~~~~~~~~~~~~~~~~~~ */
+#contact h2 {
+  color: var(--bs-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Contact form spacing if needed */
+#contact .form-label {
+  font-weight: 500;
+}
+#contact input,
+#contact textarea {
+  border-radius: 4px;
+}
+
+/* Submit button with gold hover for variety */
+#contact .btn-primary:hover {
+  background-color: var(--gold-accent);
+  color: var(--bs-primary);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ */
+/*  9. Footer Styling   */
+/* ~~~~~~~~~~~~~~~~~~~~ */
+#siteFooter {
+  background-color: #222;
+  border-top: 3px solid var(--gold-accent);
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+}
+
+#siteFooter small {
+  font-size: 0.9rem;
+}
+.logo-badge {
+  background-color: var(--gold-accent); /* #fec53c */
+  color: var(--bs-primary);            /* #1e3a8a */
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem; /* slight rounded corners */
+  font-weight: 700;       /* keep it bold */
+  display: inline-block;  /* ensures the badge wraps neatly */
+}
+
+/* Optional: A hover effect for the badge */
+.logo-badge:hover {
+  background-color: #ffda73; /* a lighter gold shade on hover */
+  color: #163466;            /* a darker navy shade on hover */
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.highlight {
+  border: 3px solid #fec53c;
+  background-color: #fffbea;
+}

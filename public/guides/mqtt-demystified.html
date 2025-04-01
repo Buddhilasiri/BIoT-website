@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIoT Guide - MQTT Demystified</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <!-- Prism.js theme for code highlighting (optional) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css"
+  />
+
+  <!-- Your custom CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+        <span class="logo-badge">🐝BioT</span>
+      </a>
+      <button
+        class="navbar-toggler text-white"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="border-color: #fec53c;"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../white-papers.html">White Papers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="guides.html">Guides & Tutorials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Overview Section -->
+  <header class="py-5 text-white" style="background-color: var(--bs-primary);">
+    <div class="container">
+      <h1 class="display-4 fw-bold">“MQTT Demystified” – The Secret Language of IoT Devices</h1>
+      <p class="lead mt-3">
+        A fun, complete guide to understanding MQTT and its role in the Internet of Things.
+      </p>
+      <!-- Optional PDF Download Button -->
+      <!--
+      <a
+        href="../assets/pdfs/mqtt-demystified.pdf"
+        class="btn btn-outline-light mt-3"
+        target="_blank"
+      >
+        Download PDF
+      </a>
+      -->
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="my-5">
+    <div class="container">
+
+      <!-- Abstract -->
+      <section class="mb-5">
+        <h2 class="text-navy">Abstract</h2>
+        <p>
+          MQTT (Message Queuing Telemetry Transport) is the whispering protocol behind the Internet 
+          of Things, quietly enabling sensors, apps, and machines to communicate efficiently. 
+          Whether it’s a smart home lightbulb reacting to your app, or thousands of industrial 
+          sensors updating a cloud dashboard in real time — chances are, MQTT is at work.
+        </p>
+        <p>
+          This guide strips away the fluff and lays out what MQTT is, how it works, and how it fits 
+          into both cloud-based and local ecosystems, giving you a strong theoretical foundation 
+          before jumping into hands-on projects.
+        </p>
+      </section>
+
+      <!-- Introduction -->
+      <section class="mb-5">
+        <h2 class="text-navy">Introduction: Why MQTT?</h2>
+        <p>
+          Traditional internet protocols like HTTP are often too heavyweight for the constrained 
+          environments of IoT — think battery-powered sensors with limited bandwidth and memory. 
+          Enter MQTT, designed to be:
+        </p>
+        <ul>
+          <li>Lightweight 🪶</li>
+          <li>Efficient 📡</li>
+          <li>Reliable even in flaky networks 🌐</li>
+        </ul>
+        <p>
+          Developed by IBM in the late '90s for oil pipelines (no kidding), MQTT is now the backbone 
+          of modern IoT systems across smart homes, agriculture, manufacturing, and beyond.
+        </p>
+      </section>
+
+      <!-- Core Concepts Section / Accordion -->
+      <section class="mb-5">
+        <h2 class="text-navy">Core Concepts of MQTT</h2>
+        <div class="accordion" id="mqttAccordion">
+
+          <!-- Concept 1: Protocol Type (Pub/Sub) -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                ✅ 1. Protocol Type: Publish/Subscribe
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#mqttAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  MQTT is a publish/subscribe messaging protocol. Unlike HTTP (client/server), MQTT 
+                  has decoupled communication:
+                </p>
+                <ul>
+                  <li><strong>Publishers</strong> send messages</li>
+                  <li><strong>Subscribers</strong> receive messages</li>
+                  <li>A <strong>Broker</strong> handles the routing in between</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concept 2: Key Terminologies -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                ✅ 2. Key Terminologies
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#mqttAccordion"
+            >
+              <div class="accordion-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Term</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Broker</td>
+                      <td>
+                        Central server that receives messages from publishers 
+                        and sends them to subscribers
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Topic</td>
+                      <td>
+                        The address or label of a message. Think of it like a mailbox name: 
+                        <code>home/livingroom/temp</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Payload</td>
+                      <td>The actual data being sent (e.g., <code>22.5°C</code> or <code>ON</code>)</td>
+                    </tr>
+                    <tr>
+                      <td>QoS</td>
+                      <td>Quality of Service – how delivery of messages is guaranteed</td>
+                    </tr>
+                    <tr>
+                      <td>Retain</td>
+                      <td>
+                        A flag telling the broker to keep the last message for new subscribers
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Last Will</td>
+                      <td>A "farewell" message sent if a device disconnects unexpectedly</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concept 3: How MQTT Works Conceptually -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                🧭 How MQTT Works (Conceptually)
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingThree"
+              data-bs-parent="#mqttAccordion"
+            >
+              <div class="accordion-body">
+                <ol>
+                  <li>
+                    A sensor <strong>publishes</strong> data, e.g. 
+                    <code>temperature = 22.5</code> to topic <code>home/kitchen/temp</code>.
+                  </li>
+                  <li>
+                    The <strong>broker</strong> receives this and checks who’s subscribed.
+                  </li>
+                  <li>
+                    It <strong>forwards</strong> the message to all active subscribers.
+                  </li>
+                </ol>
+                <p>
+                  The publisher doesn’t know who the subscribers are — that’s the magic. 
+                  It’s completely decoupled.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cloud vs Local -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                ☁️ MQTT Brokers: Cloud vs Local
+              </button>
+            </h2>
+            <div
+              id="collapseFour"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingFour"
+              data-bs-parent="#mqttAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Your choice of broker determines how devices communicate. Let’s explore:
+                </p>
+                <h5>🌐 Cloud-Based Brokers</h5>
+                <p>Ideal for remote monitoring, multi-location setups, public dashboards, etc.</p>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Broker</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>HiveMQ Cloud</td>
+                      <td>Free tier available, great docs</td>
+                    </tr>
+                    <tr>
+                      <td>Adafruit IO</td>
+                      <td>User-friendly for hobbyists</td>
+                    </tr>
+                    <tr>
+                      <td>AWS IoT Core</td>
+                      <td>Enterprise-grade, integrated with AWS</td>
+                    </tr>
+                    <tr>
+                      <td>Mosquitto on Cloud</td>
+                      <td>Self-hosted approach on AWS/Azure/GCP</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p><strong>Security is essential</strong> — use TLS encryption, authentication, and topic access control.</p>
+
+                <h5>🖥️ Local MQTT Brokers</h5>
+                <p>
+                  Perfect for low latency, offline access, or full control:
+                </p>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Broker</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mosquitto</td>
+                      <td>Lightweight, open-source, industry standard</td>
+                    </tr>
+                    <tr>
+                      <td>EMQX</td>
+                      <td>Feature-rich, MQTT 5.0 compatible</td>
+                    </tr>
+                    <tr>
+                      <td>NanoMQ</td>
+                      <td>Ultra-light, optimized for edge computing</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- MQTT Versions -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFive"
+                aria-expanded="false"
+                aria-controls="collapseFive"
+              >
+                📶 MQTT Versions & QoS
+              </button>
+            </h2>
+            <div
+              id="collapseFive"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingFive"
+              data-bs-parent="#mqttAccordion"
+            >
+              <div class="accordion-body">
+                <p><strong>MQTT 3.1.1</strong> is the most common, <strong>MQTT 5.0</strong> adds advanced features.</p>
+                <h5>QoS Levels:</h5>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>QoS Level</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>0</td>
+                      <td>"At most once" – fire &amp; forget</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>"At least once" – guaranteed, may repeat</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>"Exactly once" – safest but slowest</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security & Use Cases -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseSix"
+                aria-expanded="false"
+                aria-controls="collapseSix"
+              >
+                🔐 Security & Real-World Use Cases
+              </button>
+            </h2>
+            <div
+              id="collapseSix"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingSix"
+              data-bs-parent="#mqttAccordion"
+            >
+              <div class="accordion-body">
+                <h5>Security in MQTT:</h5>
+                <ul>
+                  <li>Use TLS for encryption</li>
+                  <li>Require username/password or client certificates</li>
+                  <li>Implement ACLs to control topic access</li>
+                </ul>
+
+                <h5>Real-World Use Cases:</h5>
+                <ul>
+                  <li><strong>Smart Home</strong>: sensors publishing data to home automation</li>
+                  <li><strong>Industrial IoT</strong>: machines alerting maintenance</li>
+                  <li><strong>Agriculture</strong>: soil moisture sensors triggering irrigation</li>
+                  <li><strong>Fleet Management</strong>: vehicles publishing GPS/fuel data</li>
+                  <li><strong>Health Monitoring</strong>: wearables sending vitals to a remote server</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- End accordion -->
+      </section>
+
+      <!-- Final Thoughts -->
+      <section class="mb-5">
+        <h2 class="text-navy">Final Thoughts</h2>
+        <p>
+          MQTT isn’t just another protocol. It’s the language of machines in an increasingly 
+          connected world. Understanding the theoretical architecture helps you design 
+          <strong>scalable, resilient, and efficient</strong> systems, whether you choose 
+          a cloud-based or local approach.
+        </p>
+        <p>
+          Ready to build the future of automation? With MQTT, you’re well on your way!
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-3 text-center text-white" id="siteFooter" style="background-color: #333;">
+    <div class="container">
+      <small>
+        &copy; <span id="year"></span> BioT. All rights reserved.
+      </small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- Prism.js for code highlighting (if needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
+
+  <script>
+    // Auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

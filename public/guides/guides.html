@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BioT | Guides & Tutorials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <!-- Your custom CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <!-- NAVBAR (copy from index.html) -->
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+        <span class="logo-badge">🐝BioT</span>
+      </a>
+      <button
+        class="navbar-toggler text-white"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="border-color: #fec53c;"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <!-- Adjust these as needed -->
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../projects/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../white-paper.html">White Papers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="guides.html">Guides & Tutorials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero/Intro Section -->
+  <header class="py-5 bg-light">
+    <div class="container text-center">
+      <h1 class="display-4 text-navy fw-bold">Guides & Tutorials</h1>
+      <p class="lead">
+        Hands-on instructions for IoT setups, edge computing, security, and more.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content: Guides Grid -->
+  <main class="my-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow" id="card-guide-3">
+            <img
+              src="../assets/images/guides/what-is-iot.png"
+              class="card-img-top"
+              alt="What is IoT?"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-navy">What is the Internet of Things (IoT)?</h5>
+              <p class="card-text">
+                A beginner-friendly introduction to IoT, covering what it is,
+                why it matters, and real-world examples.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="what-is-iot.html" class="btn btn-outline-primary">
+                View Guide
+              </a>
+            </div>
+          </div>
+        </div>
+                <!-- "MQTT Demystified" Guide Card -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow" id="card-guide-6">
+            <img
+              src="../assets/images/guides/MQTT.png"
+              class="card-img-top"
+              alt="MQTT Demystified"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-navy">MQTT Demystified</h5>
+              <p class="card-text">
+                A fun, complete guide to understanding MQTT and its role in IoT systems.
+                Learn about brokers, topics, QoS, and how MQTT quietly powers the future.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="mqtt-demystified.html" class="btn btn-outline-primary">
+                View Guide
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Guide Card 1 -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow" id="card-guide-1">
+            <img
+              src="../assets/images/guides/hello-mqtt.webp"
+              class="card-img-top"
+              alt="Hello MQTT Guide"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-navy">Hello MQTT</h5>
+              <p class="card-text">
+                Your first steps into real-time IoT messaging with Python and Mosquitto.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <!-- Link to individual guide page -->
+              <a href="hello-mqtt.html" class="btn btn-outline-primary">
+                View Guide
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example "What is IoT?" card -->
+
+        <!-- Guide Card X -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow" id="card-guide-4">
+            <img
+              src="../assets/images/guides/simsensorData.png"
+              class="card-img-top"
+              alt="Simulate Sensor Data"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-navy">Simulate Sensor Data with Python + MQTT</h5>
+              <p class="card-text">
+                Learn how to publish mock weather data (temp, humidity, pressure) to MQTT. 
+                No real sensors required—perfect for testing IoT setups.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="simSensorData.html" class="btn btn-outline-primary">
+                View Guide
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Guide Card N -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow" id="card-guide-5">
+            <img
+              src="../assets/images/guides/wokwiDHT22.png"
+              class="card-img-top"
+              alt="ESP32 DHT22 Wokwi"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-navy">Simulating ESP32 + DHT22 with Wokwi</h5>
+              <p class="card-text">
+                Learn how to run a virtual ESP32 with a DHT22 sensor entirely in your browser,
+                no hardware required! Perfect for rapid IoT prototyping.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="esp32-dht22-wokwi.html" class="btn btn-outline-primary">
+                View Guide
+              </a>
+            </div>
+          </div>
+        </div>
+                <!-- Guide Card 2 -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow" id="card-guide-2">
+            <img
+              src="../assets/images/guides/smartDistanceMeter.png"
+              class="card-img-top"
+              alt="ESP32 Ultrasonic Guide"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-navy">ESP32 Ultrasonic Distance Meter</h5>
+              <p class="card-text">
+                Build a real-world IoT project measuring distances with the HC-SR04 sensor:
+                from Serial Monitor to a web-based UI & MQTT integration.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="esp32-ultrasonic.html" class="btn btn-outline-primary">
+                View Guide
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Additional Guides as needed -->
+        <!-- Guide Card 2, 3, etc. -->
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-3 text-center text-white" id="siteFooter" style="background-color: #333;">
+    <div class="container">
+      <small>
+        &copy; <span id="year"></span> BioT. All rights reserved.
+      </small>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script>
+    // Auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Highlight a guide card if query param "guide" is set, e.g. ?guide=1
+    const params = new URLSearchParams(window.location.search);
+    const guideParam = params.get('guide');
+    if (guideParam) {
+      const cardToHighlight = document.getElementById(`card-guide-${guideParam}`);
+      if (cardToHighlight) {
+        cardToHighlight.classList.add('highlight');
+      }
+    }
+  </script>
+</body>
+</html>

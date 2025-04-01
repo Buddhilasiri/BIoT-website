@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BIoT Guide - What is the Internet of Things?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <!-- Prism.js theme for code highlighting (optional if you add code snippets) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css"
+  />
+
+  <!-- Your custom CSS (same as index.html, etc.) -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.html">
+        <span class="logo-badge">🐝BioT</span>
+      </a>
+      <button
+        class="navbar-toggler text-white"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="border-color: #fec53c;"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../white-paper.html">White Papers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="guides.html">Guides & Tutorials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="../index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Overview Section -->
+  <header class="py-5 text-white" style="background-color: var(--bs-primary);">
+    <div class="container">
+      <h1 class="display-4 fw-bold">What is the Internet of Things (IoT)?</h1>
+      <p class="lead mt-3">
+        Connect everyday objects to the internet so they can collect data, share it,
+        and make decisions on their own. Welcome to the future!
+      </p>
+      <!-- Optional: PDF Download Button, if you have a PDF version of this guide -->
+      <!--
+      <a
+        href="../assets/pdfs/what-is-iot.pdf"
+        class="btn btn-outline-light mt-3"
+        target="_blank"
+      >
+        Download PDF
+      </a>
+      -->
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="my-5">
+    <div class="container">
+      <!-- Introduction -->
+      <section class="mb-5">
+        <h2 class="text-navy">Overview</h2>
+        <p>
+          Imagine if the physical objects around you—like your light bulb, fridge,
+          car, or even your toothbrush—could think, talk, and act based on what’s
+          happening around them. That’s what the Internet of Things (IoT) is all about:
+          connecting everyday things to the internet so they can collect data, share it,
+          and even make decisions on their own.
+        </p>
+      </section>
+
+      <!-- Accordion for Key Sections -->
+      <section class="mb-5">
+        <h2 class="text-navy">Guide Contents</h2>
+        <div class="accordion" id="iotGuideAccordion">
+
+          <!-- Why IoT is Important -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Why is IoT Important?
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#iotGuideAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Let’s face it—humans are great, but we’re not always efficient.
+                  IoT helps us:
+                </p>
+                <ul>
+                  <li><strong>Save time and energy</strong> (lights that turn off when no one is in the room).</li>
+                  <li><strong>Make smarter decisions</strong> (vehicles that alert you to engine problems before they break down).</li>
+                  <li><strong>Improve safety and quality</strong> (factories that detect faults in machines early).</li>
+                </ul>
+                <p>
+                  IoT is about creating smart systems that work with us (and sometimes
+                  for us).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Where is IoT Used? -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                Where is IoT Used? (Real-World Examples)
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#iotGuideAccordion"
+            >
+              <div class="accordion-body">
+                <p>Here’s where you might already see IoT in action:</p>
+                <h5 class="mt-3">1. Smart Homes</h5>
+                <ul>
+                  <li>Smart lights: Turn on when you enter the room.</li>
+                  <li>Smart thermostats: Adjust temperature based on your schedule.</li>
+                  <li>Voice assistants: Control everything with your voice (e.g., Alexa, Google Assistant).</li>
+                </ul>
+                <h5 class="mt-3">2. Connected Vehicles</h5>
+                <ul>
+                  <li>Cars that detect obstacles and apply brakes.</li>
+                  <li>Alert you when maintenance is due.</li>
+                  <li>Share traffic data with other vehicles.</li>
+                </ul>
+                <h5 class="mt-3">3. Industrial Automation (Industry 4.0)</h5>
+                <ul>
+                  <li>Machines in factories equipped with sensors to detect temperature, vibration, or pressure.</li>
+                  <li>Alert engineers when something’s off.</li>
+                  <li>Reduce downtime and improve safety.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- How Does It Work? (Key Building Blocks) -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                How Does It All Work? (Key Building Blocks)
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingThree"
+              data-bs-parent="#iotGuideAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  Let’s break IoT into four main parts—like ingredients in a recipe:
+                </p>
+                <ol>
+                  <li>
+                    <strong>Sensors – The “Feelers”</strong><br/>
+                    Detect changes in the environment (temperature, motion, light, etc.).
+                    Without sensors, your system is blind.
+                  </li>
+                  <li>
+                    <strong>Microcontrollers – The “Brains”</strong><br/>
+                    Small computers (like the ESP32) that read the sensors and decide what to do next.
+                  </li>
+                  <li>
+                    <strong>Connectivity – The “Messenger”</strong><br/>
+                    Wi-Fi, Bluetooth, LoRa, or MQTT to send data somewhere else (the cloud, your phone, etc.).
+                  </li>
+                  <li>
+                    <strong>Data Processing – The “Decision Maker”</strong><br/>
+                    Once data reaches a server or cloud platform, it can be analyzed, visualized, or trigger actions.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wrap-up -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                Wrap-up: Why Should You Care?
+              </button>
+            </h2>
+            <div
+              id="collapseFour"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingFour"
+              data-bs-parent="#iotGuideAccordion"
+            >
+              <div class="accordion-body">
+                <p>
+                  As engineering students, IoT opens up a world of innovation:
+                </p>
+                <ul>
+                  <li>Want to build something futuristic? Start with a sensor and a microcontroller.</li>
+                  <li>Want to make systems more efficient and intelligent? IoT is your playground.</li>
+                  <li>Want to work in industries from healthcare to space exploration? IoT is everywhere.</li>
+                </ul>
+                <p>
+                  In short, IoT is about making things smarter, faster, and more connected.
+                  It’s not just tech—it’s the future, and you get to build it!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> <!-- End Accordion -->
+      </section>
+
+    </div> <!-- /.container -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-3 text-center text-white" id="siteFooter" style="background-color: #333;">
+    <div class="container">
+      <small>
+        &copy; <span id="year"></span> BioT. All rights reserved.
+      </small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- Prism.js for code highlighting (optional if adding code) -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
+
+  <script>
+    // Auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
